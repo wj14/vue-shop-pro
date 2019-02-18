@@ -16,19 +16,19 @@
         <el-menu
           background-color="#333744"
           text-color="#fff"
-          :style="menushow?'width:65px;':'width:200px;'"
           active-text-color="#409EFF"
           :collapse="menushow"
           :collapse-transition="false"
           :unique-opened="true"
+          :router="true"
         >
-          <el-submenu :index="item.id+''" v-for="(item,k) in menuList" :key="item.id">
+          <el-submenu  :style="menushow?'width:65px;':'width:200px;'" :index="item.id+''" v-for="(item,k) in menuList" :key="item.id">
             <template slot="title">
               <i :class="'iconfont icon-' + menuicon[k]"></i>
               <span>{{item.authName}}</span>
             </template>
             <el-menu-item
-              :index="item.id + '-' + item2.id"
+              :index="item2.path"
               v-for="item2 in item.children"
               :key="item2.id"
             >
@@ -72,6 +72,7 @@ export default {
     },
     async getMenuList() {
       const { data: res } = await this.$http.get('menus')
+      console.log(res)
       if (res.meta.status !== 200) {
         return this.$message.error(res.meta.msg)
       }

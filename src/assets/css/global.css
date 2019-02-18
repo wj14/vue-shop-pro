@@ -13,3 +13,17 @@ html,body,div#app {
 i.iconfont {
   margin-right: 10px;
 }
+
+.box-card {
+  margin-top: 15px;
+}
+
+.el-table {
+  margin-top: 15px;
+  font-size: 12px;
+}
+
+.el-pagination {
+  margin-top: 15px;
+  font-size: 12px;
+}
